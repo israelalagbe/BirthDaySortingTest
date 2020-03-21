@@ -16,14 +16,15 @@ class Radio extends Component {
   }
 
   render() {
+    const { sortBy } = this.props;
     return (
       <div className='radioButtons'>
         <div className='left'>
-          <input type='radio' onChange={(event)=>event.target.checked && this.onChange('name')} />
+          <input type='radio' onChange={(event)=>event.target.checked && sortBy('name')} />
           <label>&nbsp;&nbsp;Sort by name</label>
         </div>
         <div className='right'>
-          <input type='radio' onChange={(event)=>event.target.checked && this.onChange('age')} />
+          <input type='radio' onChange={(event)=>event.target.checked && sortBy('age')} />
           <label>&nbsp;&nbsp;Sort by age</label>
         </div>
       </div>
