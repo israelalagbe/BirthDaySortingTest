@@ -11,7 +11,9 @@ class App extends Component {
   }
 
   sortByParameter(parameter) {
-    // set state of 'parameterState' here
+     this.setState({
+      parameterState:parameter
+     })
   }
 
   render() {
