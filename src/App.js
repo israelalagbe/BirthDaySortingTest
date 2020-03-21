@@ -12,7 +12,7 @@ class App extends Component {
 
   sortByParameter= (parameter)=>{
      this.setState({
-      parameterState:parameter
+       parameterState:parameter
      })
   }
 
@@ -23,7 +23,7 @@ class App extends Component {
           <h1>Birthday Records</h1>
         </center>
         <Radio sortBy={this.sortByParameter} />
-        <Table />
+        <Table sortParameter={this.state.parameterState} />
       </div>
 );
 

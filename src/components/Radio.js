@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { PropTypes } from 'prop-types';
+import PropTypes from 'prop-types';
 
 class Radio extends Component {
   constructor() {
@@ -20,11 +20,11 @@ class Radio extends Component {
     return (
       <div className='radioButtons'>
         <div className='left'>
-          <input type='radio' onChange={(event)=>event.target.checked && sortBy('name')} />
+          <input name='sortPicker' type='radio' onChange={(event)=>event.target.checked && sortBy('name')} />
           <label>&nbsp;&nbsp;Sort by name</label>
         </div>
         <div className='right'>
-          <input type='radio' onChange={(event)=>event.target.checked && sortBy('age')} />
+          <input name='sortPicker' type='radio' onChange={(event)=>event.target.checked && sortBy('age')} />
           <label>&nbsp;&nbsp;Sort by age</label>
         </div>
       </div>

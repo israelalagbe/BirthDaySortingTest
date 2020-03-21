@@ -50,9 +50,13 @@ class Table extends Component {
 	compareNames(person1, person2) {
 		return person1.name.localeCompare(person2.name);
 	}
-
+	componentWillReceiveProps(nextProps) {
+        console.log('componentWillReceiveProps', nextProps);
+    }
 	render() {
-		const people = this.people;
+		const sortParameter = this.props.sortParameter;
+		const sortCallback = sortParameter==='name'? this.compareNames : this.compareDates;
+		const people = this.people.sort(sortCallback);
 		return (
 			<div className='table-div'>
 				<table className='table table-striped table-bordered table-hover full-width'>
