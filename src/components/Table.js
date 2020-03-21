@@ -1,9 +1,9 @@
-import React, {Component} from 'react';
-import {PropTypes} from 'prop-types';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Table extends Component {
 	constructor() {
-        super()
+		super()
 		this.people = [
 			{
 				name: "John Sina",
@@ -33,38 +33,48 @@ class Table extends Component {
 		];
 	}
 	compareDates(person1, person2) {
-		// complete this date comparator which enables sort by age
+		const pattern = /(\d{2})\.(\d{2})\.(\d{4})/;
+		const date1 = new Date(person1.birth.replace(pattern, '$3-$2-$1'));
+		const date2 = new Date(person2.birth.replace(pattern, '$3-$2-$1'));
+		if (date1 < date2) {
+			return -1;
+		}
+		if (date1 === date2) {
+			return 0;
+		}
+		if (date1 > date2) {
+			return 1;
+		}
 	}
 
 	compareNames(person1, person2) {
-		// complete this string comparator with enables sort by name
+		return person1.name.localeCompare(person2.name);
 	}
 
 	render() {
+		const people = this.people;
 		return (
-  <div className='table-div'>
-    <table className='table table-striped table-bordered table-hover full-width'>
-      <thead>
-        <tr>
-          <th className='course-name'>Person Name</th>
-          <th className='duration'>Date of Birth</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td />
-        </tr>
-      </tbody>
-    </table>
-  </div>
-);
+			<div className='table-div'>
+				<table className='table table-striped table-bordered table-hover full-width'>
+					<thead>
+						<tr>
+							<th className='course-name'>Person Name</th>
+							<th className='duration'>Date of Birth</th>
+						</tr>
+					</thead>
+					<tbody>
+						{people.map((person,index) => (<tr key={index}><td>{person.name}</td><td>{person.birth}</td></tr>))}
+					</tbody>
+				</table>
+			</div>
+		);
 
 	}
 }
 
-// Uncomment the snippet below
-// Table.propTypes = {
-// 	sortParameter: PropTypes.string
-// }
+
+Table.propTypes = {
+	sortParameter: PropTypes.string
+}
 
 export default Table;
